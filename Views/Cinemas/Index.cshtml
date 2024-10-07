@@ -1,31 +1,31 @@
-﻿@model IEnumerable<Actor>
+﻿@model IEnumerable<Cinema>
 @{
-    ViewData["Title"] = "List Of Actors";
+    ViewData["Title"] = "List Of Cinemas";
 }
 <div class="row">
     <div class="col-md-8 offset-md-2">
         <table class="table">
             <thead>
                 <tr class="text-center">
-                    <th>@Html.DisplayNameFor(model => model.ProfilePictureUrl)</th>
-                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                    <th> @Html.DisplayNameFor(model => model.Bio)</th>
+                    <th>@Html.DisplayNameFor(model => model.Logo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th> @Html.DisplayNameFor(model => model.Descreption)</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach(var item in Model)
+                @foreach (var item in Model)
                 {
                     <tr>
                         <td class="align-midlle">
-                            <img class="rounded-circle" src="@item.ProfilePictureUrl" alt="@item.FullName" style="max-width:150 px" />
+                            <img class="rounded-circle" src="@item.Logo" alt="@item.Name" style="max-width:150 px" />
                         </td>
                         <td class="align-middle">
-                            @Html.DisplayFor(modelItem=>item.FullName)
+                            @Html.DisplayFor(modelItem => item.Name)
 
 
                         </td>
-                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Bio)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Descreption)</td>
                         <td class="align-middle">
                             <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a> |
                             <a class="btn btn-outline-info"><i class="bi bi-eye"></i>Details</a> |
