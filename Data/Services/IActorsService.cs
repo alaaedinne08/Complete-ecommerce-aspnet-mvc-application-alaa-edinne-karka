@@ -9,6 +9,6 @@ namespace eTickets.Data.Services
         void Add(Actor actor);
         Actor Update(int id,Actor newActor);
         void    Delete(int id);
-
+        Task AddAsync(Actor actor);
     }
 }

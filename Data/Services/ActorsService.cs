@@ -12,6 +12,12 @@ namespace eTickets.Data.Services
         }
         public void Add(Actor actor)
         {
+            _context.Actors.Add(actor);
+            _context.SaveChanges();
+        }
+
+        public Task AddAsync(Actor actor)
+        {
             throw new NotImplementedException();
         }
 
