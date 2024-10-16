@@ -14,6 +14,7 @@ internal class Program
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
         //Services Configuration
         builder.Services.AddScoped<IActorsService, ActorsService>();
+        builder.Services.AddScoped<IProducersService, ProducersService>();
 
         builder.Services.AddControllersWithViews();
 
