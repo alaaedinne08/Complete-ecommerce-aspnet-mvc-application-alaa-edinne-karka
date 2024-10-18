@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args) // Changed to async Task
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container (equivalent to the ConfigureServices in Startup.cs)
+        // Add services to the container
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
@@ -36,14 +36,15 @@ internal class Program
         builder.Services.AddScoped<IActorsService, ActorsService>();
         builder.Services.AddScoped<IProducersService, ProducersService>();
         builder.Services.AddTransient<IEmailSender, EmailSender>();
-
+        builder.Services.AddScoped<IMoviesService, MoviesService>();
+        builder.Services.AddScoped<ICinemasService, CinemasService>();
 
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages(); // Important for Razor pages, including Identity
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline (equivalent to the Configure method in Startup.cs)
+        // Configure the HTTP request pipeline
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -70,7 +71,7 @@ internal class Program
         app.MapRazorPages(); // This is essential for Identity pages
 
         // Seed the database
-        AppDbInitializer.Seed(app);
+        await AppDbInitializer.Seed(app); // Await the seeding process
 
         app.Run();
     }

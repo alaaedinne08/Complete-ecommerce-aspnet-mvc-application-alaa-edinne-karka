@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eTickets.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ActorsController : Controller
     {
           private readonly IActorsService _service;
